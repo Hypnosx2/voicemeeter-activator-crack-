@@ -9,28 +9,54 @@
 #AutoIt3Wrapper_Res_Description=Voicemeeter Crack
 #AutoIt3Wrapper_Res_CompanyName=Hypnos
 
+Global $LANG = "EN"
+
+If @OSLang = "041F" Then ; Türkçe
+    $LANG = "TR"
+EndIf
+
+If $LANG = "TR" Then
+    $TXT_TITLE      = "VoiceMeeter Crack"
+    $TXT_INFO       = "Voicemeeter yüklüyse kaldir ve yükleyip açmadan önce lisansla butonuna bas."
+    $BTN_LICENSE    = "VoiceMeeter Lisansla"
+    $BTN_CLOSE      = "Programi Kapat"
+    $BTN_INSTALL    = "VoiceMeeter Indir"
+    $BTN_REMOVE     = "VoiceMeeter Kaldir"
+    $MSG_SUCCESS_T  = "Basarili"
+    $MSG_SUCCESS_C  = "Voicemeeter lisanslandi."
+Else
+    $TXT_TITLE      = "VoiceMeeter Crack"
+    $TXT_INFO       = "If Voicemeeter is installed, uninstall it and click license before opening after reinstall."
+    $BTN_LICENSE    = "License VoiceMeeter"
+    $BTN_CLOSE      = "Close Program"
+    $BTN_INSTALL    = "Download VoiceMeeter"
+    $BTN_REMOVE     = "Uninstall VoiceMeeter"
+    $MSG_SUCCESS_T  = "Success"
+    $MSG_SUCCESS_C  = "Voicemeeter has been licensed."
+EndIf
+
 Opt("GUIOnEventMode", 0)
 
 $width = 380
 $height = 240
 
-$gui = GUICreate("VoiceMeeter Crack", $width, $height, -1, -1, _
+$gui = GUICreate($TXT_TITLE, $width, $height, -1, -1, _
         BitOR($WS_CAPTION, $WS_SYSMENU))
 
 
 GUISetIcon("icon.ico")
 
 
-GUICtrlCreateLabel("Voicemeeter yüklüyse kaldir ve yükleyip açmadan önce lisansla butonuna bas.", 0, 15, $width, 28, _
+GUICtrlCreateLabel($TXT_INFO, 0, 15, $width, 28, _
         BitOR($SS_CENTER, $SS_CENTERIMAGE))
 
 
-$btnOpenVM   = GUICtrlCreateButton("VoiceMeeter Lisansla", 30, 60, 150, 38)
-$btnCloseApp = GUICtrlCreateButton("Programi Kapat", 200, 60, 150, 38)
+$btnOpenVM   = GUICtrlCreateButton($BTN_LICENSE, 30, 60, 150, 38)
+$btnCloseApp = GUICtrlCreateButton($BTN_CLOSE, 200, 60, 150, 38)
 
 
-$btnInstall = GUICtrlCreateButton("VoiceMeeter Indir", 30, 130, 150, 38)
-$btnRemove  = GUICtrlCreateButton("VoiceMeeter Kaldir", 200, 130, 150, 38)
+$btnInstall = GUICtrlCreateButton($BTN_INSTALL, 30, 130, 150, 38)
+$btnRemove  = GUICtrlCreateButton($BTN_REMOVE, 200, 130, 150, 38)
 
 GUISetState(@SW_SHOW)
 
@@ -41,7 +67,7 @@ While 1
 
         Case $btnOpenVM
             RegWrite("HKEY_CURRENT_USER\VB-Audio\VoiceMeeter", "code", "REG_DWORD", 0x00123456)
-			MsgBox($MB_ICONNONE, "Basarili", "Voicemeeter lisanslandi.")
+			MsgBox($MB_ICONNONE, $MSG_SUCCESS_T, $MSG_SUCCESS_C)
 
         Case $btnCloseApp
             Exit
