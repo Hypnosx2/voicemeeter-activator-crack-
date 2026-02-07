@@ -35,7 +35,7 @@ Else
     $MSG_SUCCESS_C  = "Voicemeeter has been licensed."
 EndIf
 
-Global $VM_Path = "C:\Program Files (x86)\VB\Voicemeeter\VoicemeeterPotato.exe"
+Global $VM_Path = "C:\Program Files (x86)\VB\Voicemeeter\voicemeeter8.exe.exe"
 Global $VM_Uninstall = "C:\Program Files (x86)\VB\Voicemeeter\VoicemeeterPotatoSetup.exe"  ; Eğer farklıysa regedit'ten bak veya manuel değiştir
 
 Opt("GUIOnEventMode", 0)
@@ -116,4 +116,5 @@ Func UninstallVoiceMeeter()
         MsgBox($MB_ICONERROR, "Hata", "Kaldirici bulunamadi.")
     EndIf
 EndFunc
+
 
