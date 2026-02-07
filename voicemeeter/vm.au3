@@ -6,7 +6,7 @@
 #AutoIt3Wrapper_Res_ProductVersion=1.0.0
 #AutoIt3Wrapper_Res_FileVersion=1.0.0.0
 #AutoIt3Wrapper_Res_ProductName=Fast
-#AutoIt3Wrapper_Res_Description=Voicemeeter Crack
+#AutoIt3Wrapper_Res_Description=Voicemeeter Lisans
 #AutoIt3Wrapper_Res_CompanyName=Hypnos
 
 Global $LANG = "EN"
@@ -16,7 +16,7 @@ If @OSLang = "041F" Then ; Türkçe
 EndIf
 
 If $LANG = "TR" Then
-    $TXT_TITLE      = "VoiceMeeter Crack"
+    $TXT_TITLE      = "VoiceMeeter Lisans"
     $TXT_INFO       = "Voicemeeter yüklüyse kaldir ve yükleyip açmadan önce lisansla butonuna bas."
     $BTN_LICENSE    = "VoiceMeeter Lisansla"
     $BTN_CLOSE      = "Programi Kapat"
@@ -25,7 +25,7 @@ If $LANG = "TR" Then
     $MSG_SUCCESS_T  = "Basarili"
     $MSG_SUCCESS_C  = "Voicemeeter lisanslandi."
 Else
-    $TXT_TITLE      = "VoiceMeeter Crack"
+    $TXT_TITLE      = "VoiceMeeter License"
     $TXT_INFO       = "If Voicemeeter is installed, uninstall it and click license before opening after reinstall."
     $BTN_LICENSE    = "License VoiceMeeter"
     $BTN_CLOSE      = "Close Program"
@@ -35,7 +35,7 @@ Else
     $MSG_SUCCESS_C  = "Voicemeeter has been licensed."
 EndIf
 
-Global $VM_Path = "C:\Program Files (x86)\VB\Voicemeeter\voicemeeter8.exe.exe"
+Global $VM_Path = "C:\Program Files (x86)\VB\Voicemeeter\voicemeeter8.exe"
 Global $VM_Uninstall = "C:\Program Files (x86)\VB\Voicemeeter\VoicemeeterPotatoSetup.exe"  ; Eğer farklıysa regedit'ten bak veya manuel değiştir
 
 Opt("GUIOnEventMode", 0)
@@ -116,5 +116,6 @@ Func UninstallVoiceMeeter()
         MsgBox($MB_ICONERROR, "Hata", "Kaldirici bulunamadi.")
     EndIf
 EndFunc
+
 
 
