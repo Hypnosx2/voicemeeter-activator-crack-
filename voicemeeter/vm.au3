@@ -11,13 +11,13 @@
 
 Global $LANG = "EN"
 
-If @OSLang = "041F" Then ; T�rk�e
+If @OSLang = "041F" Then ; Türkçe
     $LANG = "TR"
 EndIf
 
 If $LANG = "TR" Then
     $TXT_TITLE      = "VoiceMeeter Crack"
-    $TXT_INFO       = "Voicemeeter y�kl�yse kaldir ve y�kleyip a�madan �nce lisansla butonuna bas."
+    $TXT_INFO       = "Voicemeeter yüklüyse kaldir ve yükleyip açmadan önce lisansla butonuna bas."
     $BTN_LICENSE    = "VoiceMeeter Lisansla"
     $BTN_CLOSE      = "Programi Kapat"
     $BTN_INSTALL    = "VoiceMeeter Indir"
@@ -34,6 +34,9 @@ Else
     $MSG_SUCCESS_T  = "Success"
     $MSG_SUCCESS_C  = "Voicemeeter has been licensed."
 EndIf
+
+Global $VM_Path = "C:\Program Files (x86)\VB\Voicemeeter\VoicemeeterPotato.exe"
+Global $VM_Uninstall = "C:\Program Files (x86)\VB\Voicemeeter\VoicemeeterPotatoSetup.exe"  ; Eğer farklıysa regedit'ten bak veya manuel değiştir
 
 Opt("GUIOnEventMode", 0)
 
@@ -66,9 +69,17 @@ While 1
             Exit
 
         Case $btnOpenVM
+			ProcessClose("VoicemeeterPotato.exe")
+  			ProcessClose("Voicemeeter.exe")  ; 
+    		Sleep(3000)  ; 
             RegWrite("HKEY_CURRENT_USER\VB-Audio\VoiceMeeter", "code", "REG_DWORD", 0x00123456)
 			MsgBox($MB_ICONNONE, $MSG_SUCCESS_T, $MSG_SUCCESS_C)
-
+			If FileExists($VM_Path) Then
+			    Run('"' & $VM_Path & '" -r')  ; -r engine restart eder
+			    MsgBox($MB_ICONINFORMATION, $MSG_SUCCESS_T, $MSG_SUCCESS_C & @CRLF & "Eğer challenge çıkarsa sistemi yeniden başlatmayı dene.")
+			Else
+			    MsgBox($MB_ICONERROR, "Hata", "Voicemeeter Potato bulunamadı. Path: " & $VM_Path)
+			EndIf
         Case $btnCloseApp
             Exit
 
@@ -105,3 +116,4 @@ Func UninstallVoiceMeeter()
         MsgBox($MB_ICONERROR, "Hata", "Kaldirici bulunamadi.")
     EndIf
 EndFunc
+
